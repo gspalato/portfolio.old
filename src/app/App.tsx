@@ -7,7 +7,7 @@ import CommandPalette from '@/components/CommandPalette';
 
 import '@styles/styles.css';
 
-import { routes } from '@/router';
+import { routes } from '@/routes';
 
 const App = () => {
 	const location = useLocation();
@@ -16,7 +16,7 @@ const App = () => {
 		<>
 			<div className='background-noise' />
 			<CommandPalette />
-			<Nav position='top' />
+			<Nav position='bottom' />
 			<AnimatePresence mode='wait'>
 				<Routes location={location} key={location.pathname}>
 					{routes.map((route) => (

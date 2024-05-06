@@ -14,7 +14,7 @@ const Component: React.FC<Props> = (props) => {
 	const { children, className, isOpen, setOpen, style } = props;
 
 	const classNames = classes(
-		'container fixed z-20 h-screen w-screen bg-black/75 backdrop-blur-md',
+		'container fixed z-20 h-screen w-screen bg-black/25 backdrop-blur-sm',
 		className,
 	);
 

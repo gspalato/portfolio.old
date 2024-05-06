@@ -4,13 +4,17 @@ import classes from '@lib/classes';
 
 type Props = {
 	className?: string;
+	direction?: 'horizontal' | 'vertical';
 };
 
 const Component: React.FC<Props> = (props) => {
-	const { className } = props;
+	const { className, direction = 'horizontal' } = props;
 
 	const classNames = classes(
-		'via-overlay-1 h-[1px] w-full bg-gradient-to-r from-transparent to-transparent',
+		'via-overlay-1 from-transparent to-transparent',
+		direction === 'horizontal'
+			? ' h-[1px] w-full bg-gradient-to-r'
+			: 'h-full w-[1px] bg-gradient-to-b',
 		className,
 	);
 

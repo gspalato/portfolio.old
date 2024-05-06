@@ -13,6 +13,7 @@ export default defineConfig({
 			'@assets': path.join(__dirname, 'src/assets/'),
 			'@components': path.join(__dirname, 'src/components/'),
 			'@lib': path.join(__dirname, 'src/lib/'),
+			'@constants': path.join(__dirname, 'src/constants/'),
 			'@public': path.join(__dirname, 'public/'),
 			'@styles': path.join(__dirname, 'src/styles/'),
 			'@types': path.join(__dirname, 'src/types/'),
