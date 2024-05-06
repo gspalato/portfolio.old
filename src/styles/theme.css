@@ -1,0 +1,17 @@
+@theme {
+	--color-background: #0c0c0c;
+
+	--color-text: #f0f0f0;
+	--color-text-secondary: #bbbbbb;
+
+	--color-overlay-1: rgba(242, 242, 242, 0.05);
+	--color-overlay-2: rgba(242, 242, 242, 0.1);
+	--color-overlay-3: rgba(242, 242, 242, 0.25);
+	--color-overlay-4: rgba(242, 242, 242, 0.5);
+	--color-overlay-5: rgba(242, 242, 242, 0.75);
+
+	--font-family-display: 'Instrument Serif', sans-serif;
+	--font-family-title: 'Instrument Serif', sans-serif;
+	--font-family-body: 'Inter', sans-serif;
+	--font-family-mono: 'Geist Mono', monospace;
+}

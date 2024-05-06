@@ -1,0 +1,100 @@
+@import 'tailwindcss';
+
+@import url(./fonts.css);
+@import url(./theme.css);
+
+* {
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-text-size-adjust: 100%;
+}
+
+html,
+body,
+#root {
+	width: 100vw;
+	min-height: 100%;
+	overflow-x: hidden; /* Prevent horizontal scroll. A quick patch. */
+	background-color: var(--color-background);
+}
+
+#root {
+	position: relative;
+}
+
+/* Custom classes */
+
+.background-noise {
+	position: fixed;
+	top: 0%;
+	right: 0%;
+	bottom: 0%;
+	left: 0%;
+	background-image: url('https://assets-global.website-files.com/63dcb6e1a80e9454b630f4c4/644af0299bc01254815ae442_noise-overlay-2.png');
+	background-size: 200px;
+	background-attachment: fixed;
+	opacity: 0.15;
+}
+
+.background-glow {
+	position: absolute;
+	top: 0px;
+	right: 24px;
+	bottom: auto;
+	left: 24px;
+	z-index: 2;
+	height: 50%;
+	background-image: linear-gradient(
+		to right,
+		transparent 5%,
+		#f2f2f2 50%,
+		transparent 95%
+	);
+	border-radius: 2000px;
+	opacity: 0.4;
+	filter: blur(100px);
+}
+
+.text-glow {
+	text-shadow: 0 0 20px #ffffff77;
+}
+
+.gradient-text {
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+/* Text selection */
+
+::selection {
+	color: #0044ff;
+	text-shadow: none;
+}
+
+/* Scrollbar */
+
+*::-webkit-scrollbar {
+	width: 5px;
+}
+
+*::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+*::-webkit-scrollbar-button {
+	background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+	width: 5px;
+	background: #ffffff22;
+	border-radius: 10px;
+	backdrop-filter: blur(5px);
+}
+
+*.debug {
+	outline: 1px solid #0f05 !important;
+}
