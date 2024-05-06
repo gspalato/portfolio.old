@@ -1,4 +1,5 @@
-import { BackpackIcon, HomeIcon } from '@radix-ui/react-icons';
+import { AiOutlineHome } from 'react-icons/ai';
+import { RxBackpack } from 'react-icons/rx';
 import { createBrowserRouter } from 'react-router-dom';
 
 import About from '@/app/About/About';
@@ -12,7 +13,7 @@ export const routes = [
 		name: 'Home',
 		element: <Home />,
 		icon: (
-			<HomeIcon
+			<AiOutlineHome
 				height={NAVBAR_ICON_SIZE}
 				width={NAVBAR_ICON_SIZE}
 				className='text-text'
@@ -24,7 +25,7 @@ export const routes = [
 		name: 'About',
 		element: <About />,
 		icon: (
-			<BackpackIcon
+			<RxBackpack
 				height={NAVBAR_ICON_SIZE}
 				width={NAVBAR_ICON_SIZE}
 				className='text-text'

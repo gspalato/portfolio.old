@@ -1,13 +1,12 @@
-import {
-	FileTextIcon,
-	GitHubLogoIcon,
-	LinkedInLogoIcon,
-} from '@radix-ui/react-icons';
+import { FileTextIcon } from '@radix-ui/react-icons';
 import { motion } from 'framer-motion';
 import { useEffect, useRef } from 'react';
+import { FaLinkedinIn } from 'react-icons/fa6';
+import { FaGithub } from 'react-icons/fa6';
 
 import Divisor from '@components/Divisor';
-import Navlink from '@components/Navlink';
+
+import Navlink from '@/components/Navlink/Navlink';
 
 import classes from '@lib/classes';
 import { useLayout } from '@lib/layout';
@@ -22,7 +21,7 @@ const SocialLinks = [
 		name: 'GitHub',
 		url: SOCIAL_LINKS.github,
 		icon: (
-			<GitHubLogoIcon
+			<FaGithub
 				height={NAVBAR_ICON_SIZE}
 				width={NAVBAR_ICON_SIZE}
 				className='text-text'
@@ -33,7 +32,7 @@ const SocialLinks = [
 		name: 'LinkedIn',
 		url: SOCIAL_LINKS.linkedin,
 		icon: (
-			<LinkedInLogoIcon
+			<FaLinkedinIn
 				height={NAVBAR_ICON_SIZE}
 				width={NAVBAR_ICON_SIZE}
 				className='text-text'
@@ -75,7 +74,6 @@ const Component: React.FC<Props> = (props) => {
 
 	return (
 		<nav id='nav' className={navClasses}>
-			<motion.div className='absolute top-0 left-0 h-[2px] w-6 rounded-tl rounded-tr bg-white' />
 			<motion.div
 				className='border-overlay-2 bg-overlay-1 flex h-[45px] max-w-[75%] min-w-[180px] rounded-full border shadow-[0_10px_25px_rgba(0,0,0,.15)] backdrop-blur-md'
 				initial={{ y: position === 'top' ? -100 : 100, opacity: 0 }}
@@ -87,15 +85,19 @@ const Component: React.FC<Props> = (props) => {
 				}}
 			>
 				<motion.div
-					className='flex w-full justify-between gap-1 p-1'
+					className='relative flex w-full justify-between gap-2 p-1'
 					ref={linkContainerRef as any}
 				>
 					{routes.map((route) => (
-						<Navlink to={route.path}>{route.icon}</Navlink>
+						<Navlink name={route.name} to={route.path}>
+							{route.icon}
+						</Navlink>
 					))}
-					<Divisor direction='vertical' className='mx-1' />
+					<Divisor direction='vertical' />
 					{SocialLinks.map((link) => (
-						<Navlink to={link.url}>{link.icon}</Navlink>
+						<Navlink name={link.name} to={link.url}>
+							{link.icon}
+						</Navlink>
 					))}
 				</motion.div>
 			</motion.div>
