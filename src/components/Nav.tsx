@@ -75,7 +75,7 @@ const Component: React.FC<Props> = (props) => {
 	return (
 		<nav id='nav' className={navClasses}>
 			<motion.div
-				className='border-overlay-2 bg-overlay-1 flex h-[45px] max-w-[75%] min-w-[180px] rounded-full border shadow-[0_10px_25px_rgba(0,0,0,.15)] backdrop-blur-md'
+				className='border-overlay-2 bg-overlay-1 flex h-[45px] max-w-[75vw] min-w-[180px] rounded-full border shadow-[0_10px_25px_rgba(0,0,0,.15)] backdrop-blur-md'
 				initial={{ y: position === 'top' ? -100 : 100, opacity: 0 }}
 				animate={{ y: 0, opacity: 1 }}
 				transition={{
