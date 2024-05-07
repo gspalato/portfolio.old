@@ -1,4 +1,3 @@
-import { motion, MotionProps } from 'framer-motion';
 import React from 'react';
 
 import Styles from '@components/Badge/Badge.module.css';
