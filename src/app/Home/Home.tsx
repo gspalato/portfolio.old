@@ -1,10 +1,9 @@
 import { LiaArrowDownSolid } from 'react-icons/lia';
 
+import Badge from '@components/Badge/Badge';
 import Card from '@components/Card';
 import Divisor from '@components/Divisor';
 import PageWrapper from '@components/PageWrapper';
-
-import Badge from '@/components/Badge/Badge';
 
 import classes from '@lib/classes';
 
@@ -23,7 +22,7 @@ const Page = () => {
 
 	return (
 		<PageWrapper className='flex items-center'>
-			<section className='container relative flex h-screen flex-col items-center justify-center gap-6 lg:w-6xl'>
+			<section className='container !sm:pb-0 relative flex h-[100dvh] flex-col items-center justify-center gap-6 lg:w-6xl'>
 				<Badge text='Available for work!' />
 				<h1 className={heroTextClassnamesDesktop}>
 					Full-stack developer
