@@ -6,18 +6,20 @@ import classes from '@lib/classes';
 type Props = {
 	children?: React.ReactNode;
 	className?: string;
+	includeNavbarPadding?: boolean;
 };
 
 const AnimationVariants = {
-	hidden: { opacity: 0, y: 10, scale: 0.5 },
-	visible: { opacity: 1, y: 0, scale: 1 },
+	hidden: { opacity: 0, scale: 1 },
+	visible: { opacity: 1, scale: 1 },
 };
 
 const Component: React.FC<Props> = (props) => {
-	const { children, className } = props;
+	const { children, className, includeNavbarPadding } = props;
 
 	const classNames = classes(
 		'overflow-y flex h-auto w-screen flex-col',
+		includeNavbarPadding && 'pb-nav',
 		className,
 	);
 
