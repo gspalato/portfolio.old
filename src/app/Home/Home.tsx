@@ -1,3 +1,4 @@
+import { AnimatePresence, motion } from 'framer-motion';
 import { LiaArrowDownSolid } from 'react-icons/lia';
 
 import Badge from '@components/Badge/Badge';
@@ -8,6 +9,8 @@ import PageWrapper from '@components/PageWrapper';
 import classes from '@lib/classes';
 
 import Styles from './Home.module.css';
+
+const AnimatedBadge = motion(Badge);
 
 const Page = () => {
 	const heroTextClassnamesMobile = classes(
@@ -23,24 +26,33 @@ const Page = () => {
 	return (
 		<PageWrapper className='flex items-center'>
 			<section className='container !sm:pb-0 relative flex h-[100dvh] flex-col items-center justify-center gap-6 lg:w-6xl'>
-				<Badge text='Available for work!' />
-				<h1 className={heroTextClassnamesDesktop}>
-					Full-stack developer
-					<br />& computer engineering
-					<br />
-					student.
-				</h1>
-				<h1 className={heroTextClassnamesMobile}>
-					Full-stack
-					<br />
-					developer
-					<br />& computer
-					<br />
-					engineering
-					<br />
-					student.
-				</h1>
+				<AnimatedBadge text='Available for work!' />
+				<AnimatePresence>
+					<motion.h1
+						key='hero-text-desktop'
+						className={heroTextClassnamesDesktop}
+					>
+						Full-stack developer
+						<br />& computer engineering
+						<br />
+						student.
+					</motion.h1>
+					<motion.h1
+						key='hero-text-mobile'
+						className={heroTextClassnamesMobile}
+					>
+						Full-stack
+						<br />
+						developer
+						<br />& computer
+						<br />
+						engineering
+						<br />
+						student.
+					</motion.h1>
+				</AnimatePresence>
 				<div
+					key='hero-background-glow'
 					className={classes(
 						Styles.hero_background_glow,
 						Styles.hero_background_glow_center,
@@ -48,7 +60,7 @@ const Page = () => {
 				/>
 				<LiaArrowDownSolid
 					size={30}
-					className='mt-4 animate-bounce text-4xl text-[#eee]'
+					className='animate-bounce text-4xl text-[#eee]'
 				/>
 			</section>
 			<Divisor />
