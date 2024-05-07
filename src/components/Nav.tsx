@@ -1,6 +1,6 @@
 import { FileTextIcon } from '@radix-ui/react-icons';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FaLinkedinIn } from 'react-icons/fa6';
 import { FaGithub } from 'react-icons/fa6';
 import { useNavigate } from 'react-router-dom';

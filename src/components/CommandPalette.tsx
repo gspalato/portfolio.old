@@ -4,7 +4,7 @@ import Dialog from '@components/Dialog';
 
 type Props = {};
 
-const Component: React.FC<Props> = (props) => {
+const Component: React.FC<Props> = () => {
 	const [isOpen, setOpen] = React.useState(false);
 
 	useEffect(() => {
