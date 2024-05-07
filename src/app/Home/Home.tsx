@@ -11,6 +11,7 @@ import classes from '@lib/classes';
 import Styles from './Home.module.css';
 
 const AnimatedBadge = motion(Badge);
+const AnimatedCard = motion(Card);
 
 const Page = () => {
 	const heroTextClassnamesMobile = classes(
@@ -60,7 +61,7 @@ const Page = () => {
 				/>
 				<LiaArrowDownSolid
 					size={30}
-					className='animate-bounce text-4xl text-[#eee]'
+					className='text-overlay-4 animate-bounce text-4xl'
 				/>
 			</section>
 			<Divisor />
@@ -69,7 +70,17 @@ const Page = () => {
 					Projects
 				</h1>
 				<div className='flex flex-1 grow-1 flex-col items-center'>
-					<Card></Card>
+					<AnimatedCard
+						className='min-h-40 min-w-40'
+						initial={{ opacity: 0, y: 30, x: 30 }}
+						whileInView={{ opacity: 1, y: 0, x: 0 }}
+						exit={{ opacity: 0, y: -30, x: -30 }}
+						transition={{
+							type: 'tween',
+							ease: 'easeInOut',
+							duration: 0.35,
+						}}
+					></AnimatedCard>
 				</div>
 			</section>
 		</PageWrapper>
