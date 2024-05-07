@@ -74,13 +74,13 @@ const Component: React.FC<Props> = (props) => {
 	position = position ?? navbarPosition;
 
 	const navClassnames = classes(
-		'fixed z-10 flex h-[100px] w-screen items-center justify-center from-black/40 to-transparent',
+		'h-nav fixed z-10 flex w-screen items-center justify-center from-black/40 to-transparent',
 		position === 'bottom' ? 'bottom-[0%]' : 'top-[0%]',
 		position === 'bottom' ? 'bg-gradient-to-t' : 'bg-gradient-to-b',
 	);
 
 	const pillClassnames = classes(
-		'border-overlay-2 bg-overlay-1 flex h-[45px] w-auto items-start justify-center rounded-full border backdrop-blur-md',
+		'border-overlay-2 bg-overlay-1 flex h-[45px] w-auto items-start justify-center rounded-full border backdrop-blur-md backdrop-saturate-150',
 		variants?.includes('highlight') && 'shadow-inner shadow-neutral-300/5',
 	);
 
