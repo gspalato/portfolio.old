@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { FaLinkedinIn } from 'react-icons/fa6';
 import { FaGithub } from 'react-icons/fa6';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import Divisor from '@components/Divisor';
 
@@ -61,7 +61,12 @@ type Props = {
 const Component: React.FC<Props> = (props) => {
 	let { position, variants } = props;
 
-	const [activeIdx, setActiveIdx] = useState<number>(0);
+	const currentPath = useLocation().pathname;
+	const currentPathIdx = routes.findIndex((route) => {
+		return route.path === currentPath;
+	});
+
+	const [activeIdx, setActiveIdx] = useState<number>(currentPathIdx);
 
 	const navigate = useNavigate();
 
