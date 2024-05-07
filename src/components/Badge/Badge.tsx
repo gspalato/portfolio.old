@@ -1,3 +1,4 @@
+import { motion, MotionProps } from 'framer-motion';
 import React from 'react';
 
 import Styles from '@components/Badge/Badge.module.css';
@@ -15,32 +16,39 @@ type Props = {
 	variant?: 'animated-border';
 };
 
-const Component: React.FC<Props> = (props) => {
-	const { className, style, text } = props;
-	let icon = props.icon;
+const Component: React.FC<Props> = React.forwardRef<HTMLDivElement, Props>(
+	(props, ref) => {
+		const { className, style, text, ...rest } = props;
+		let icon = props.icon;
 
-	const classNames = classes(
-		'highlight-white bg-overlay-1 font-manrope text-text flex min-h-4 min-w-20 items-center justify-center gap-2 rounded-full p-1 px-4 text-sm tracking-[.3px] shadow-md backdrop-blur-sm',
-		className,
-	);
+		const classNames = classes(
+			'highlight-white bg-overlay-1 font-manrope text-text flex min-h-4 min-w-20 items-center justify-center gap-2 rounded-full p-1 px-4 text-sm tracking-[.3px] shadow-md backdrop-blur-sm',
+			className,
+		);
 
-	const pulseIndicatorClassnames = classes(
-		'h-1 w-1 rounded-full bg-[#00cc00] p-1',
-		Styles.pulse,
-	);
+		const pulseIndicatorClassnames = classes(
+			'h-1 w-1 rounded-full bg-[#00cc00] p-1',
+			Styles.pulse,
+		);
 
-	icon ??= <div className={pulseIndicatorClassnames} />;
+		icon ??= <div className={pulseIndicatorClassnames} />;
 
-	if (props.variant === 'animated-border') {
-		return <AnimatedBorderVariant {...props} />;
-	}
+		if (props.variant === 'animated-border') {
+			return <AnimatedBorderVariant ref={ref} {...props} />;
+		}
 
-	return (
-		<div className={classNames} style={{ ...style }}>
-			{icon}
-			<span>{text}</span>
-		</div>
-	);
-};
+		return (
+			<div
+				ref={ref}
+				className={classNames}
+				style={{ ...style }}
+				{...rest}
+			>
+				{icon}
+				<span>{text}</span>
+			</div>
+		);
+	},
+);
 
 export default Component;
