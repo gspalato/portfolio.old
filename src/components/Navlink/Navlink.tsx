@@ -48,10 +48,10 @@ const Component: React.FC<Props> = (props) => {
 						className='font-manrope text-text border-overlay-2 pointer-events-none absolute z-20 hidden flex-row gap-1 rounded-lg border bg-[#111] p-2 px-3 text-sm sm:flex'
 						animate={{
 							opacity: isHovered ? 1 : 0,
-							top: isHovered ? '-50px' : '-20px',
-							scale: isHovered ? 1 : 0.25,
+							top: isHovered ? '-40px' : '-30px',
+							scale: isHovered ? 1 : 0.75,
 						}}
-						transition={{ duration: 0.15 }}
+						transition={{ duration: 0.1 }}
 					>
 						{name}{' '}
 						{isExternalLink && (
