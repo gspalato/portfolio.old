@@ -1,4 +1,5 @@
 @theme {
+	/* Colors */
 	--color-background: #0c0c0c;
 
 	--color-text: #f0f0f0;
@@ -10,10 +11,14 @@
 	--color-overlay-4: rgba(242, 242, 242, 0.5);
 	--color-overlay-5: rgba(242, 242, 242, 0.75);
 
+	/* Fonts */
 	--font-family-display: 'Instrument Serif', sans-serif;
 	--font-family-title: 'Instrument Serif', sans-serif;
 	--font-family-body: 'Inter', sans-serif;
 	--font-family-mono: 'Geist Mono', monospace;
 
 	--font-family-manrope: 'Manrope', sans-serif;
+
+	/* Custom sizes */
+	--spacing-nav: 100px;
 }
