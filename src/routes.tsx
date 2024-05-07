@@ -18,7 +18,7 @@ export const routes = [
 			<AiOutlineHome
 				height={NAVBAR_ICON_SIZE}
 				width={NAVBAR_ICON_SIZE}
-				className='text-text'
+				className='text-text pb-px'
 			/>
 		),
 	},
@@ -42,7 +42,7 @@ export const routes = [
 			<FiEdit
 				height={NAVBAR_ICON_SIZE}
 				width={NAVBAR_ICON_SIZE}
-				className='text-text'
+				className='text-text pb-px'
 			/>
 		),
 	},

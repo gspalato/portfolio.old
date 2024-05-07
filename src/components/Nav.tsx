@@ -1,8 +1,9 @@
 import { FileTextIcon } from '@radix-ui/react-icons';
-import { motion } from 'framer-motion';
-import { useEffect, useRef } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useEffect, useRef, useState } from 'react';
 import { FaLinkedinIn } from 'react-icons/fa6';
 import { FaGithub } from 'react-icons/fa6';
+import { useNavigate } from 'react-router-dom';
 
 import Divisor from '@components/Divisor';
 
@@ -24,7 +25,7 @@ const SocialLinks = [
 			<FaGithub
 				height={NAVBAR_ICON_SIZE}
 				width={NAVBAR_ICON_SIZE}
-				className='text-text'
+				className='text-text pb-px'
 			/>
 		),
 	},
@@ -46,7 +47,7 @@ const SocialLinks = [
 			<FileTextIcon
 				height={NAVBAR_ICON_SIZE}
 				width={NAVBAR_ICON_SIZE}
-				className='text-text'
+				className='text-text pl-px'
 			/>
 		),
 	},
@@ -54,28 +55,56 @@ const SocialLinks = [
 
 type Props = {
 	position?: 'top' | 'bottom';
+	variants?: ('highlight' | 'normal')[];
 };
 
 const Component: React.FC<Props> = (props) => {
-	let { position } = props;
+	let { position, variants } = props;
 
-	const linkContainerRef = useRef();
+	const [activeIdx, setActiveIdx] = useState<number>(0);
 
-	useEffect(() => {}, [linkContainerRef]);
+	const navigate = useNavigate();
 
 	const { navbarPosition } = useLayout();
 	position = position ?? navbarPosition;
 
-	const navClasses = classes(
+	const navClassnames = classes(
 		'fixed z-10 flex h-[100px] w-screen items-center justify-center from-black/40 to-transparent',
 		position === 'bottom' ? 'bottom-[0%]' : 'top-[0%]',
 		position === 'bottom' ? 'bg-gradient-to-t' : 'bg-gradient-to-b',
 	);
 
+	const pillClassnames = classes(
+		'border-overlay-2 bg-overlay-1 flex h-[45px] w-auto items-start justify-center rounded-full border backdrop-blur-md',
+		variants?.includes('highlight') && 'shadow-inner shadow-neutral-300/5',
+	);
+
+	useEffect(() => {
+		const down = (e: any) => {
+			switch (e.key) {
+				case 39:
+					console.log('right');
+					navigate(routes[(activeIdx + 1) % routes.length].path);
+					break;
+
+				case 37:
+					console.log('left');
+					navigate(
+						routes[(activeIdx - 1 + routes.length) % routes.length]
+							.path,
+					);
+					break;
+			}
+		};
+
+		document.addEventListener('keydown', down);
+		return () => document.removeEventListener('keydown', down);
+	}, []);
+
 	return (
-		<nav id='nav' className={navClasses}>
+		<nav id='nav' className={navClassnames}>
 			<motion.div
-				className='border-overlay-2 bg-overlay-1 flex h-[45px] max-w-[75vw] min-w-[180px] rounded-full border shadow-[0_10px_25px_rgba(0,0,0,.15)] backdrop-blur-md'
+				className={pillClassnames}
 				initial={{ y: position === 'top' ? -100 : 100, opacity: 0 }}
 				animate={{ y: 0, opacity: 1 }}
 				transition={{
@@ -84,18 +113,37 @@ const Component: React.FC<Props> = (props) => {
 					ease: [0.64, 0.77, 0.58, 0.98],
 				}}
 			>
-				<motion.div
-					className='relative flex w-full justify-between gap-2 p-1'
-					ref={linkContainerRef as any}
-				>
-					{routes.map((route) => (
-						<Navlink name={route.name} to={route.path}>
-							{route.icon}
-						</Navlink>
-					))}
+				<motion.div className='flex h-full w-auto justify-between gap-2 p-1'>
+					<AnimatePresence>
+						{routes.map((route, index) => (
+							<Navlink
+								key={route.path}
+								name={route.name}
+								to={route.path}
+								onClick={() => setActiveIdx(index)}
+								className={classes('group relative z-[1]', {
+									'z-0': activeIdx === index,
+								})}
+							>
+								{activeIdx === index && (
+									<motion.div
+										layoutId='clicked-button'
+										transition={{ duration: 0.2 }}
+										className='highlight-white bg-overlay-2 pointer-events-none absolute inset-0 rounded-full'
+									/>
+								)}
+								{route.icon}
+							</Navlink>
+						))}
+					</AnimatePresence>
 					<Divisor direction='vertical' />
-					{SocialLinks.map((link) => (
-						<Navlink name={link.name} to={link.url}>
+					{SocialLinks.map((link, index) => (
+						<Navlink
+							key={link.url}
+							name={link.name}
+							to={link.url}
+							onClick={() => setActiveIdx(index)}
+						>
 							{link.icon}
 						</Navlink>
 					))}
