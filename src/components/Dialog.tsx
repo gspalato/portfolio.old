@@ -18,8 +18,6 @@ const Component: React.FC<Props> = (props) => {
 		className,
 	);
 
-	console.log(isOpen);
-
 	return (
 		<motion.div
 			className={classNames}
