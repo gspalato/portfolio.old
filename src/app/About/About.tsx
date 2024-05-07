@@ -1,5 +1,7 @@
 import PageWrapper from '@components/PageWrapper';
 
+import Divisor from '@/components/Divisor';
+
 const Page = () => {
 	return (
 		<PageWrapper className='flex items-center'>
@@ -11,6 +13,8 @@ const Page = () => {
 					I'm working on this page. Check back later!
 				</h2>
 			</section>
+			<Divisor />
+			<section className='container flex h-screen w-full flex-col gap-20 pt-20 px-8 lg:w-6xl lg:px-0'></section>
 		</PageWrapper>
 	);
 };
