@@ -45,7 +45,7 @@ const Component: React.FC<Props> = (props) => {
 			>
 				{showTooltip && (
 					<motion.div
-						className='font-manrope text-text border-overlay-1 pointer-events-none absolute z-20 flex hidden gap-1 rounded-lg border bg-[#111] p-2 px-3 text-sm sm:block'
+						className='font-manrope text-text border-overlay-2 pointer-events-none absolute z-20 hidden flex-row gap-1 rounded-lg border bg-[#111] p-2 px-3 text-sm sm:flex'
 						animate={{
 							opacity: isHovered ? 1 : 0,
 							top: isHovered ? '-50px' : '-20px',
