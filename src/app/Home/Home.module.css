@@ -2,6 +2,13 @@
 	text-shadow: 0 0 20px #ffffff77;
 }
 
+.hero_text_glow_experimental {
+	text-shadow:
+		0 -5px 10px rgba(0, 42, 255, 0.15),
+		0 5px 10px rgba(162, 0, 255, 0.151),
+		0 -5px 25px rgba(255, 255, 255, 0.3);
+}
+
 .hero_background_glow {
 	position: absolute;
 	top: 50%;

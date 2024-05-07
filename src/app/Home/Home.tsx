@@ -13,12 +13,12 @@ import Styles from './Home.module.css';
 const Page = () => {
 	const heroTextClassnamesMobile = classes(
 		'text-glow font-title text-center text-[17.5vw] font-bold leading-[17.5vw] tracking-tight text-[#eee] sm:hidden',
-		Styles.hero_text_glow,
+		Styles.hero_text_glow_experimental,
 	);
 
 	const heroTextClassnamesDesktop = classes(
 		'text-glow font-title hidden text-center text-[10vw] font-bold leading-[10vw] tracking-tight text-[#eee] sm:block md:text-[90px] md:leading-[90px]',
-		Styles.hero_text_glow,
+		Styles.hero_text_glow_experimental,
 	);
 
 	return (
