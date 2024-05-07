@@ -5,8 +5,6 @@ import { NavLink, NavLinkProps, To } from 'react-router-dom';
 
 import classes from '@lib/classes';
 
-import Styles from './Navlink.module.css';
-
 type Props = {
 	className?: string;
 
@@ -31,11 +29,10 @@ const Component: React.FC<Props> = (props) => {
 
 	const isExternalLink = !to.toString().startsWith('/');
 
-	const classnames = ({ isActive }: any) =>
-		classes(
-			'hover:bg-overlay-1/50 border-overlay-1 flex aspect-square h-full w-auto items-center justify-center rounded-full p-[2px] transition-all duration-150 hover:border',
-			className,
-		);
+	const classnames = classes(
+		'hover:bg-overlay-1/50 border-overlay-1 flex aspect-square h-full w-auto items-center justify-center rounded-full p-[2px] transition-all duration-150 hover:border',
+		className,
+	);
 
 	return (
 		<>

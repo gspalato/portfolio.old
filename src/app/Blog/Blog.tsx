@@ -1,7 +1,5 @@
 import PageWrapper from '@components/PageWrapper';
 
-import Styles from './Home.module.css';
-
 const Page = () => {
 	return (
 		<PageWrapper className='flex items-center'>

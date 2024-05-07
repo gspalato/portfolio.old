@@ -5,7 +5,7 @@ type Props = {
 	style?: React.CSSProperties;
 } & React.PropsWithChildren;
 
-const Component: React.FC<Props> = (props) => {
+const Component: React.FC<Props> = () => {
 	return <section></section>;
 };
 

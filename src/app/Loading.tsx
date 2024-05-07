@@ -2,7 +2,7 @@ import React from 'react';
 
 type Props = {};
 
-const Component: React.FC<Props> = (props) => {
+const Component: React.FC<Props> = () => {
 	return <></>;
 };
 
