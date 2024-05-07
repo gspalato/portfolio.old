@@ -4,44 +4,60 @@ import React from 'react';
 import classes from '@lib/classes';
 
 type Props = {
+	containerClassName?: string;
 	className?: string;
 } & React.PropsWithChildren;
 
-const Component: React.FC<Props> = (props) => {
-	const { children, className } = props;
+const Component: React.FC<Props> = React.forwardRef<HTMLDivElement, Props>(
+	(props, ref) => {
+		const { children, className, containerClassName } = props;
 
-	const mouseX = useMotionValue(0);
-	const mouseY = useMotionValue(0);
+		const mouseX = useMotionValue(0);
+		const mouseY = useMotionValue(0);
 
-	const containerClassnames = classes(
-		'group relative w-full max-w-[350px] overflow-hidden rounded-xl',
-		className,
-	);
+		const containerClassnames = classes(
+			'group relative w-full max-w-[350px] overflow-hidden rounded-xl bg-[#0b0b0b]',
+			containerClassName,
+		);
 
-	return (
-		<div
-			onMouseMove={(e) => {
-				const { left, top } = e.currentTarget.getBoundingClientRect();
+		const containerStyles = {
+			background:
+				'linear-gradient(to left top, #0b0b0b, #0d0d0d, #0e0e0e, #101010, #111111)',
+		};
 
-				mouseX.set(e.clientX - left);
-				mouseY.set(e.clientY - top);
-			}}
-			className={containerClassnames}
-		>
-			<motion.div className='absolute top-0 right-0 h-px w-80 bg-gradient-to-l from-transparent via-white/30 via-10% to-transparent' />
+		const innerClassnames = classes(
+			'border-overlay-2 relative flex flex-col gap-3 rounded-xl border py-5 px-4',
+			className,
+		);
+
+		const hoverBackground = useMotionTemplate`
+			radial-gradient(200px circle at ${mouseX}px ${mouseY}px, rgba(38, 38, 38, 0.4), transparent 80%)
+		`;
+
+		return (
 			<motion.div
-				className='pointer-events-none absolute -inset-px rounded-xl opacity-0 transition duration-300 group-hover:opacity-100'
-				style={{
-					background: useMotionTemplate`
-						radial-gradient(200px circle at ${mouseX}px ${mouseY}px, rgba(38, 38, 38, 0.4), transparent 80%)
-					`,
+				ref={ref}
+				onMouseMove={(e) => {
+					const { left, top } =
+						e.currentTarget.getBoundingClientRect();
+
+					mouseX.set(e.clientX - left);
+					mouseY.set(e.clientY - top);
 				}}
-			/>
-			<div className='relative flex flex-col gap-3 rounded-xl border border-white/10 py-5 px-4'>
-				{children}
-			</div>
-		</div>
-	);
-};
+				className={containerClassnames}
+				style={containerStyles}
+			>
+				<motion.div className='absolute top-0 right-0 h-px w-80 bg-gradient-to-l from-transparent via-white/10 via-10% to-transparent' />
+				<motion.div
+					className='pointer-events-none absolute -inset-px rounded-xl opacity-0 transition duration-300 group-hover:opacity-100'
+					style={{
+						background: hoverBackground,
+					}}
+				/>
+				<div className={innerClassnames}>{children}</div>
+			</motion.div>
+		);
+	},
+);
 
 export default Component;
