@@ -8,6 +8,11 @@ type Props = {
 	className?: string;
 };
 
+const AnimationVariants = {
+	hidden: { opacity: 0, y: 10, scale: 0.5 },
+	visible: { opacity: 1, y: 0, scale: 1 },
+};
+
 const Component: React.FC<Props> = (props) => {
 	const { children, className } = props;
 
@@ -19,10 +24,11 @@ const Component: React.FC<Props> = (props) => {
 	return (
 		<motion.div
 			className={classNames}
-			initial={{ opacity: 0 }}
-			animate={{ opacity: 1 }}
-			exit={{ opacity: 0 }}
-			transition={{ duration: 0.25 }}
+			variants={AnimationVariants}
+			initial='hidden'
+			animate='visible'
+			exit='hidden'
+			transition={{ duration: 0.2 }}
 		>
 			{children}
 		</motion.div>
