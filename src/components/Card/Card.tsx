@@ -3,8 +3,6 @@ import React from 'react';
 
 import classes from '@lib/classes';
 
-import Styles from './Card.module.css';
-
 type Props = {
 	containerClassName?: string;
 	className?: string;
