@@ -6,11 +6,11 @@ FROM alpine AS build
 
     # Install Node.js and NPM
     RUN apk add --update nodejs npm
+    RUN npm i yarn serve -g
 
     # Install dependencies
     COPY package.json .
-    RUN npm i
-    RUN npm i serve -g
+    RUN yarn
 
     # Copy source code.
     COPY . .
