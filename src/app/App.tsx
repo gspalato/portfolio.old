@@ -1,9 +1,8 @@
 import { AnimatePresence } from 'framer-motion';
 import { Route, Routes, useLocation } from 'react-router-dom';
 
-import Nav from '@components/Nav';
-
 import CommandPalette from '@/components/CommandPalette';
+import Nav from '@/components/Nav/Nav';
 
 import '@styles/styles.css';
 

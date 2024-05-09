@@ -1,17 +1,40 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { LiaArrowDownSolid } from 'react-icons/lia';
+import { Masonry } from 'react-plock';
 
 import Badge from '@components/Badge/Badge';
-import Card from '@components/Card';
 import Divisor from '@components/Divisor';
 import PageWrapper from '@components/PageWrapper';
 
 import classes from '@lib/classes';
 
+import ProjectCard from './components/ProjectCard';
 import Styles from './Home.module.css';
 
+const Projects = [
+	{
+		title: 'Ecobucks',
+		description:
+			'A concept project for a proper waste disposal reward system.',
+		img: 'https://i.ibb.co/bBKN3NP/i-Phone-Home-Mockup-2.jpg',
+		to: 'https://github.com/gspalato/ecobucks',
+	},
+	{
+		title: 'Ecobucks Station Firmware',
+		description: "The firmware for Ecobucks' waste disposal stations.",
+		img: 'https://i.ibb.co/QvdKfb0/jpeg-optimizer-Gradient-Firmware-Banner-for-Portfolio.jpg',
+		to: 'https://github.com/gspalato/ecobucks_station_firmware',
+	},
+	{
+		title: 'Portfolio',
+		description: "My personal portfolio website. You're looking at it!",
+		img: 'https://i.ibb.co/HGbSYfY/Portfolio-Banner.jpg',
+		to: 'https://github.com/gspalato/portfolio',
+	},
+];
+
 const AnimatedBadge = motion(Badge);
-const AnimatedCard = motion(Card);
+const AnimatedProjectCard = motion(ProjectCard);
 
 const Page = () => {
 	const heroTextClassnamesMobile = classes(
@@ -25,7 +48,7 @@ const Page = () => {
 	);
 
 	return (
-		<PageWrapper className='flex items-center'>
+		<PageWrapper className='flex items-center' includeNavbarPadding>
 			<section className='container !sm:pb-0 relative flex h-[100dvh] flex-col items-center justify-center gap-6 lg:w-6xl'>
 				<AnimatedBadge text='Available for work!' />
 				<AnimatePresence>
@@ -65,23 +88,35 @@ const Page = () => {
 				/>
 			</section>
 			<Divisor />
-			<section className='container flex h-screen w-full flex-col gap-20 pt-20 px-8 lg:w-6xl lg:px-0'>
+			<section className='container flex min-h-screen w-full flex-col gap-20 pt-20 px-8 lg:w-5xl lg:px-0'>
 				<h1 className='font-title text-text text-center text-5xl'>
 					Projects
 				</h1>
-				<div className='flex flex-1 grow-1 flex-col items-center'>
-					<AnimatedCard
-						className='min-h-40 min-w-40'
-						initial={{ opacity: 0, y: 30, x: 30 }}
-						whileInView={{ opacity: 1, y: 0, x: 0 }}
-						exit={{ opacity: 0, y: -30, x: -30 }}
-						transition={{
-							type: 'tween',
-							ease: 'easeInOut',
-							duration: 0.35,
-						}}
-					></AnimatedCard>
-				</div>
+				<Masonry
+					items={Projects}
+					config={{
+						columns: [1, 2],
+						gap: [24, 12],
+						media: [640, 768],
+					}}
+					render={(item, idx) => (
+						<AnimatedProjectCard
+							key={idx}
+							containerClassName='min-w-[40%]'
+							className='hover:bg-overlay-1 group hover:border-overlay-1 flex min-h-[400px] flex-col gap-3 border-none transition-all transition-all duration-300 duration-300 hover:scale-101 hover:cursor-pointer'
+							initial={{ opacity: 0 }}
+							whileInView={{ opacity: 1 }}
+							transition={{
+								type: 'spring',
+								ease: 'easeInOut',
+								duration: 0.35,
+							}}
+							img={item.img}
+							title={item.title}
+							description={item.description}
+						/>
+					)}
+				/>
 			</section>
 		</PageWrapper>
 	);

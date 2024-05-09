@@ -17,7 +17,7 @@ import { SOCIAL_LINKS } from '@constants/social';
 
 import { routes } from '@/routes';
 
-const SocialLinks = [
+export const SocialLinks = [
 	{
 		name: 'GitHub',
 		url: SOCIAL_LINKS.github,

@@ -15,7 +15,8 @@ const Component: React.FC<Props> = (props) => {
 	const { className, text, icon, style, ref, ...rest } = props;
 
 	const containerClassnames = classes(
-		'group relative grid overflow-hidden rounded-full py-1 px-3 shadow-[0_1000px_0_0_hsl(0_0%_20%)_inset] transition-colors duration-200',
+		'group text-text relative grid overflow-hidden rounded-full py-1 px-3 transition-colors duration-200',
+		'shadow-[0_1000px_0_0_hsl(0_0%_20%)_inset]',
 		className,
 	);
 

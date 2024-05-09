@@ -1,10 +1,9 @@
 import React from 'react';
 
 import Styles from '@components/Badge/Badge.module.css';
+import AnimatedBorderVariant from '@components/Badge/variants/AnimatedBorderBadge';
 
 import classes from '@lib/classes';
-
-import AnimatedBorderVariant from './AnimatedBorderVariant';
 
 type Props = {
 	className?: string;
@@ -12,16 +11,18 @@ type Props = {
 	icon?: React.ReactElement;
 	style?: React.CSSProperties;
 
-	variant?: 'animated-border';
+	variant?: 'default' | 'overlay' | 'animated-border';
 };
 
 const Component: React.FC<Props> = React.forwardRef<HTMLDivElement, Props>(
 	(props, ref) => {
-		const { className, style, text, ...rest } = props;
+		const { className, style, text, variant = 'default', ...rest } = props;
 		let icon = props.icon;
 
 		const classNames = classes(
-			'highlight-white bg-overlay-1 font-manrope text-text flex min-h-4 min-w-20 items-center justify-center gap-2 rounded-full p-1 px-4 text-sm tracking-[.3px] shadow-md backdrop-blur-sm',
+			'font-manrope text-text flex min-h-4 min-w-20 items-center justify-center gap-2 rounded-full p-1 px-4 text-[13px] tracking-[.3px] shadow-md backdrop-blur-sm',
+			variant === 'default' && 'border-overlay-2 border bg-transparent',
+			variant === 'overlay' && 'highlight-white bg-overlay-1',
 			className,
 		);
 
@@ -32,7 +33,7 @@ const Component: React.FC<Props> = React.forwardRef<HTMLDivElement, Props>(
 
 		icon ??= <div className={pulseIndicatorClassnames} />;
 
-		if (props.variant === 'animated-border') {
+		if (variant === 'animated-border') {
 			return <AnimatedBorderVariant ref={ref} {...props} />;
 		}
 

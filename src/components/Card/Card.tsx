@@ -3,14 +3,17 @@ import React from 'react';
 
 import classes from '@lib/classes';
 
+import Styles from './Card.module.css';
+
 type Props = {
 	containerClassName?: string;
 	className?: string;
+	variant?: 'default' | 'hover';
 } & React.PropsWithChildren;
 
 const Component: React.FC<Props> = React.forwardRef<HTMLDivElement, Props>(
 	(props, ref) => {
-		const { children, className, containerClassName } = props;
+		const { children, className, containerClassName, variant } = props;
 
 		const mouseX = useMotionValue(0);
 		const mouseY = useMotionValue(0);
@@ -47,11 +50,14 @@ const Component: React.FC<Props> = React.forwardRef<HTMLDivElement, Props>(
 				className={containerClassnames}
 				style={containerStyles}
 			>
-				<motion.div className='absolute top-0 right-0 h-px w-80 bg-gradient-to-l from-transparent via-white/10 via-10% to-transparent' />
+				{variant === 'hover' && (
+					<motion.div className='absolute top-0 right-0 h-px w-80 bg-gradient-to-l from-transparent via-white/10 via-10% to-transparent' />
+				)}
 				<motion.div
 					className='pointer-events-none absolute -inset-px rounded-xl opacity-0 transition duration-300 group-hover:opacity-100'
 					style={{
-						background: hoverBackground,
+						background:
+							variant === 'hover' ? hoverBackground : undefined,
 					}}
 				/>
 				<div className={innerClassnames}>{children}</div>

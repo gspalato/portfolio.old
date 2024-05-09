@@ -1,13 +1,13 @@
-import { motion } from 'framer-motion';
-import React from 'react';
+import { motion, MotionProps } from 'framer-motion';
+import React, { useEffect } from 'react';
 
 import classes from '@lib/classes';
 
 type Props = {
-	children?: React.ReactNode;
 	className?: string;
 	includeNavbarPadding?: boolean;
-};
+} & MotionProps &
+	React.PropsWithChildren;
 
 const AnimationVariants = {
 	hidden: { opacity: 0, scale: 1 },
@@ -15,7 +15,11 @@ const AnimationVariants = {
 };
 
 const Component: React.FC<Props> = (props) => {
-	const { children, className, includeNavbarPadding } = props;
+	const { children, className, includeNavbarPadding, ...rest } = props;
+
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
 
 	const classNames = classes(
 		'overflow-y flex h-auto w-screen flex-col',
@@ -31,6 +35,7 @@ const Component: React.FC<Props> = (props) => {
 			animate='visible'
 			exit='hidden'
 			transition={{ duration: 0.2 }}
+			{...rest}
 		>
 			{children}
 		</motion.div>
