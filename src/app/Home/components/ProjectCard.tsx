@@ -1,7 +1,7 @@
 import { motion, useMotionTemplate, useMotionValue } from 'framer-motion';
 import React from 'react';
 import { GoArrowUpRight } from 'react-icons/go';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import classes from '@lib/classes';
 
