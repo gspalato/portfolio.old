@@ -80,7 +80,7 @@ const Component: React.FC<Props> = (props) => {
 	);
 
 	const pillClassnames = classes(
-		'border-overlay-2 bg-overlay-1 flex h-[45px] w-auto items-start justify-center rounded-full border backdrop-blur-md backdrop-saturate-150',
+		'border-overlay-2 flex h-[45px] w-auto items-start justify-center rounded-full border bg-[#161616aa] backdrop-blur-md backdrop-saturate-150',
 		variants?.includes('highlight') && 'shadow-inner shadow-neutral-300/5',
 	);
 
@@ -130,6 +130,7 @@ const Component: React.FC<Props> = (props) => {
 									'z-0': activeIdx === index,
 								})}
 							>
+								{route.icon}
 								{activeIdx === index && (
 									<motion.div
 										layoutId='clicked-button'
@@ -137,7 +138,6 @@ const Component: React.FC<Props> = (props) => {
 										className='highlight-white bg-overlay-2 pointer-events-none absolute inset-0 rounded-full'
 									/>
 								)}
-								{route.icon}
 							</Navlink>
 						))}
 					</AnimatePresence>
