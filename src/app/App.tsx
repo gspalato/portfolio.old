@@ -4,6 +4,8 @@ import { Route, Routes, useLocation } from 'react-router-dom';
 import CommandPalette from '@/components/CommandPalette';
 import Nav from '@/components/Nav/Nav';
 
+import { ProjectsProvider } from '@lib/api/projects';
+
 import '@styles/styles.css';
 
 import { routes } from '@/routes';
@@ -12,7 +14,7 @@ const App = () => {
 	const location = useLocation();
 
 	return (
-		<>
+		<ProjectsProvider>
 			<div className='background-noise' />
 			<CommandPalette />
 			<Nav position='bottom' />
@@ -27,7 +29,7 @@ const App = () => {
 					))}
 				</Routes>
 			</AnimatePresence>
-		</>
+		</ProjectsProvider>
 	);
 };
 
