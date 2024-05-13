@@ -1,6 +1,7 @@
 import { motion, useMotionTemplate, useMotionValue } from 'framer-motion';
 import React from 'react';
 import { GoArrowUpRight } from 'react-icons/go';
+import { Link, useNavigate } from 'react-router-dom';
 
 import classes from '@lib/classes';
 
@@ -14,6 +15,7 @@ type Props = {
 	img: string;
 	title: string;
 	description?: string;
+	url?: string;
 } & React.PropsWithChildren;
 
 const Component: React.FC<Props> = React.forwardRef<HTMLDivElement, Props>(
@@ -24,11 +26,14 @@ const Component: React.FC<Props> = React.forwardRef<HTMLDivElement, Props>(
 			description,
 			img,
 			title,
+			url,
 			variant,
 		} = props;
 
 		const mouseX = useMotionValue(0);
 		const mouseY = useMotionValue(0);
+
+		const navigate = useNavigate();
 
 		const containerClassnames = classes(
 			'group relative w-full overflow-hidden rounded-xl bg-[#0b0b0b]',
@@ -60,6 +65,7 @@ const Component: React.FC<Props> = React.forwardRef<HTMLDivElement, Props>(
 					mouseX.set(e.clientX - left);
 					mouseY.set(e.clientY - top);
 				}}
+				onClick={() => url && navigate(url)}
 				className={containerClassnames}
 				style={containerStyles}
 			>
