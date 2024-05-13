@@ -15,7 +15,7 @@ FROM alpine AS build
     # Copy source code.
     COPY . .
 
-    RUN npm run build
+    RUN yarn build
 
 FROM build AS final
     USER app
