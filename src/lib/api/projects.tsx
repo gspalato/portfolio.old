@@ -24,8 +24,8 @@ export const ProjectsProvider: React.FC<ProjectsProviderProps> = (props) => {
 		setLoading(true);
 
 		const baseUrl =
-			import.meta.env.VITE_ETHER_URL ?? 'http://localhost:4000/';
-		//'https://foundation.unreal.sh/portfolio/';
+			import.meta.env.VITE_ETHER_URL ??
+			'https://foundation.unreal.sh/portfolio/';
 
 		if (!baseUrl || baseUrl?.length === 0) {
 			console.error(
