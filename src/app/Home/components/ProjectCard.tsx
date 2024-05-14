@@ -47,7 +47,7 @@ const Component: React.FC<Props> = React.forwardRef<HTMLDivElement, Props>(
 
 		const innerClassnames = classes(
 			'group relative flex flex-col gap-3 rounded-xl py-5 px-4',
-			'hover:bg-overlay-1 hover:border-overlay-2 min-h-[400px] transition-all duration-300 hover:scale-101 hover:cursor-pointer',
+			'hover:bg-overlay-1 hover:border-overlay-2 transition-all duration-300 hover:scale-101 hover:cursor-pointer',
 			className,
 		);
 
