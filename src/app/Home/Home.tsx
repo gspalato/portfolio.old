@@ -100,7 +100,7 @@ const Page = () => {
 							<AnimatedProjectCard
 								key={idx}
 								containerClassName='min-w-[40%]'
-								className='hover:bg-overlay-1 group hover:border-overlay-1 flex min-h-[400px] flex-col gap-3 border-none transition-all transition-all duration-300 duration-300 hover:scale-101 hover:cursor-pointer'
+								className='hover:bg-overlay-1 group hover:border-overlay-1 flex flex-col gap-3 border-none transition-all transition-all duration-300 duration-300 hover:scale-101 hover:cursor-pointer'
 								initial={{ opacity: 0 }}
 								whileInView={{ opacity: 1 }}
 								transition={{
